@@ -2,19 +2,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('.nav-item');
     const views = document.querySelectorAll('.view');
     const infoCard = document.querySelector('.info-card');
+    const heroVideo = document.getElementById('hero-video');
+
+    // Responsive Video Selection
+    const setVideoSource = () => {
+        const isMobile = window.innerWidth <= 768;
+        const currentSrc = heroVideo.querySelector('source')?.src;
+        const targetSrc = isMobile ? 'mobile_video.mp4' : 'desktop_video.mp4';
+
+        // Only update if source actually changes to avoid flickering
+        if (!currentSrc || !currentSrc.includes(targetSrc)) {
+            heroVideo.innerHTML = `<source src="${targetSrc}" type="video/mp4">`;
+            heroVideo.load();
+            heroVideo.play().catch(e => console.log("Auto-play prevented or video loading: ", e));
+        }
+    };
+
+    setVideoSource();
+    window.addEventListener('resize', setVideoSource);
 
     // Tab switching logic
     navItems.forEach(item => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
-            
             const target = item.getAttribute('data-target');
 
-            // Update active nav link
             navItems.forEach(nav => nav.classList.remove('active'));
             item.classList.add('active');
 
-            // Update active view
             views.forEach(view => {
                 view.classList.remove('active');
                 if (view.id === `${target}-view`) {
@@ -22,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Add a subtle bounce to the card on switch
             infoCard.style.transform = 'scale(0.98)';
             setTimeout(() => {
                 infoCard.style.transform = 'scale(1)';
