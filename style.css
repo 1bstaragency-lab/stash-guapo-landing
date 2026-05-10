@@ -58,6 +58,8 @@ body {
     object-fit: cover;
     display: block;
     border-radius: 4px;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 /* Info Card */

@@ -21,6 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setVideoSource();
     window.addEventListener('resize', setVideoSource);
 
+    // Seamless Loop Enforcement
+    heroVideo.addEventListener('ended', () => {
+        heroVideo.currentTime = 0;
+        heroVideo.play();
+    });
+
     // Tab switching logic
     navItems.forEach(item => {
         item.addEventListener('click', (e) => {
