@@ -68,15 +68,15 @@ body {
     bottom: 3rem;
     right: 3rem;
     background-color: var(--bg-white);
-    padding: 2.5rem 3rem;
+    padding: 1.5rem 2rem;
     border-radius: 4px;
     z-index: 30;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.25rem;
     box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    min-width: 400px;
-    min-height: 220px;
+    min-width: 340px;
+    min-height: 180px;
     transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
@@ -129,14 +129,14 @@ body {
 
 .view-header {
     text-align: center;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 }
 
 .view-header h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 800;
     letter-spacing: -1px;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .view-header p {
@@ -150,7 +150,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .platform-icons {
@@ -286,7 +286,8 @@ body {
         width: 100%;
         min-width: 100%;
         border-radius: 0;
-        padding: 3rem 2rem calc(3rem + env(safe-area-inset-bottom));
+        /* Padding including safe area for Safari bottom bar */
+        padding: 2rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom));
         box-shadow: none;
     }
 
